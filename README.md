@@ -4,6 +4,10 @@ Coding projects written in Late 2023 - 2024 while learning Java during AP Comput
 
 The code in this repository are split into multiple different projects which I've either developed personally, or learned by watching tutorials or videos. Some of the code are not original! This is simply code I've written as apart of my journey in learning Java. 
 
+## Project List:
+// Work In Progress
+
+
 ## Notes:
 * These programs were tested on M1 Mac Eclipse
 * Most programs here uses Java 1.8, check Exceptions for any exclusions 

@@ -5,7 +5,7 @@ Coding projects written in Late 2023 - 2024 while learning Java during AP Comput
 The code in this repository are split into multiple different projects which I've either developed personally, or learned by watching tutorials or videos. Some of the code are not original! This is simply code I've written as apart of my journey in learning Java. 
 
 ## Project List:
-// Work In Progress
+* [ArrayProject](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/ArrayProject) - Written in Oct 10, 2023
 
 
 ## Notes:

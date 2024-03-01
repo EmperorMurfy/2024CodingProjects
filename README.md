@@ -1,12 +1,13 @@
 # 2024 Java Projects
 
-Coding projects written in Late 2023 - 2024 while learning Java during AP Computer Science
+Coding projects written between late 2023 - 2024 while learning Java during AP Computer Science
 
 The code in this repository are split into multiple different projects which I've either developed personally, or learned by watching tutorials or videos. Some of the code are not original! This is simply code I've written as apart of my journey in learning Java. 
 
 ## Project List:
 * [ArrayProject](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/ArrayProject) - Written on Oct 10, 2023
 * [Java Inheritance Example](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/Java%20Inheritance%20Example) - Written on January 10, 2024
+* [The Square Eliminator Until Infinity](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/The%20Square%20Eliminator%20Until%20Infinity) - Written on February 12, 2024
 
 
 ## Notes:
@@ -17,7 +18,7 @@ The code in this repository are split into multiple different projects which I'v
 ## Instructions:
 If you wish to use any of the code, follow the instructions:
 
-1) please select on the specific folder & download said folder
+1) Please select on the specific project you wish to run & download said folder
 
 2) Depending on the project, create a new project in your java workspace (eclipse) with the correct version
 

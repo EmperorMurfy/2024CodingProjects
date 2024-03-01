@@ -17,6 +17,7 @@ The code in this repository are split into multiple different projects which I'v
 * These programs were tested on M1 Mac Eclipse
 * Most programs here uses Java 1.8, check Exceptions for any exclusions 
 * Exception: the stopwatch project uses Java 13
+* Each folder contains its own information regarding itself for more specific info
 
 ## Instructions:
 If you wish to use any of the code, follow the instructions:
@@ -25,4 +26,4 @@ If you wish to use any of the code, follow the instructions:
 
 2) Depending on the project, create a new project in your java workspace (eclipse) with the correct version
 
-3) The downloaded folder should contain only the SRC files & classes, drag that into your empty project's SRC. This may depend on the project.
+3) The downloaded folder should contain only the SRC files & classes, drag that into your empty project's SRC. This may depend on the project. 

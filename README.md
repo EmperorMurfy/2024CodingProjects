@@ -7,6 +7,7 @@ The code in this repository are split into multiple different projects which I'v
 ## Project List:
 * [ArrayProject](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/ArrayProject) - Written on Oct 10, 2023
 * [StringMethod](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/StringMethods) - Written between December 19, 2023 - February 27, 2023
+* [ArticleList](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/ArticleListProject) - Written on December 21, 2023
 * [Java Inheritance Example](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/Java%20Inheritance%20Example) - Written on January 10, 2024
 * [Stopwatch](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/Stopwatch) - Written on January 27, 2024
 * [The Square Eliminator Until Infinity](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/The%20Square%20Eliminator%20Until%20Infinity) - Written on February 12, 2024

@@ -11,6 +11,7 @@ The code in this repository are split into multiple different projects which I'v
 * [Java Inheritance Example](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/Java%20Inheritance%20Example) - Written on January 10, 2024
 * [Stopwatch](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/Stopwatch) - Written on January 27, 2024
 * [The Square Eliminator Until Infinity](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/The%20Square%20Eliminator%20Until%20Infinity) - Written on February 12, 2024
+* [VideoToASCII](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/VideoToASCII) - UNFINISHED on March 1, 2024 - Likely to not continue
 
 
 ## Notes:

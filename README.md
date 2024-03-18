@@ -19,6 +19,7 @@ The code in this repository are split into multiple different projects which I'v
 * Most programs here uses Java 1.8, check Exceptions for any exclusions 
 * Exception: the stopwatch project uses Java 13
 * Each folder contains its own information regarding itself for more specific info
+* Exception: Javascript was added for translation of one of the existing programs in ArrayProjects
 
 ## Instructions:
 If you wish to use any of the code, follow the instructions:

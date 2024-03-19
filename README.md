@@ -1,4 +1,4 @@
-# 2024 Java Projects
+# 2024 Coding Projects
 
 Coding projects written between late 2023 - 2024 while learning Java during AP Computer Science or self-teaching coding languages
 

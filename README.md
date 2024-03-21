@@ -12,6 +12,8 @@ The code in this repository are split into multiple different projects which I'v
 * **Java** - [The Square Eliminator Until Infinity](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/The%20Square%20Eliminator%20Until%20Infinity) - Written on February 12, 2024
 * **Java** - [VideoToASCII](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/VideoToASCII) - Written on March 1, 2024 | Unfinished
 * **JavaScript** - [ProductClasses](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/productClasses) - Written on March 19, 2024
+* **C++** - [primeNumber](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/primeNumbers) - Written on March 20, 2024
+* **Python** - [pythonLists](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/pythonLists) - Written on March 21, 2024
 
 
 ## Notes:

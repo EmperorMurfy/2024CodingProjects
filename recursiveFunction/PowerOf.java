@@ -18,18 +18,18 @@ public class PowerOf {
 		String c = s.nextLine();
 		
 		int a; 
-
-		// if negative exponent
+		
 		if (c.contains("-")) {
 			c = c.substring(1);
 			a = Integer.valueOf(c);
 			System.out.println(b + " to the power of " + "-" + a  + " is " + "1/" + powerOf(b, a));
+			System.out.println("1/(" + b + superscript(a) + ")");
 		}
-
-		// if positive exponent or zero
+		
 		else {
 			a = Integer.valueOf(c);
 			System.out.println(b + " to the power of " + a  + " is " + powerOf(b, a));
+			System.out.println(b + superscript(a));
 		}
 	
 		

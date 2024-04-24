@@ -1,6 +1,6 @@
 // Name: Mason Z.
 // Program: PowerOf
-// Date: Apr 16, 2024
+// Date: Apr 24, 2024
 // Description: powerOf function + superscript function
 
 import java.util.Scanner;
@@ -14,23 +14,38 @@ public class PowerOf {
 		System.out.println("what is base value?");
 		int b = s.nextInt();
 		System.out.println("what is the exponent? (power of)? ");
-		int a = s.nextInt();
+		s.nextLine();
+		String c = s.nextLine();
+		
+		int a; 
 
-		// System.out.println(b + " to the power of " + a );
-		System.out.println(b + superscript(a) + " is " + powerOf(b, a));
-	}
+		// if negative exponent
+		if (c.contains("-")) {
+			c = c.substring(1);
+			a = Integer.valueOf(c);
+			System.out.println(b + " to the power of " + "-" + a  + " is " + "1/" + powerOf(b, a));
+		}
+
+		// if positive exponent or zero
+		else {
+			a = Integer.valueOf(c);
+			System.out.println(b + " to the power of " + a  + " is " + powerOf(b, a));
+		}
 	
+		
+	}
+
 
 	// powerOf function 
 	// recursive function - learning example!
 	// b = base, a =  exponent
 	private static int powerOf(int b, int a) {
-		if (a == 0 )
+		if (a == 0)
 			return 1;
 		else 
 			return b * powerOf(b, a-1);
 	}
-	
+
 
 	// superScript function
 	public static String superscript(int n) {
@@ -42,9 +57,4 @@ public class PowerOf {
 		}
 		return sb.toString();
 	}
-	
-	
-
-
-
 }

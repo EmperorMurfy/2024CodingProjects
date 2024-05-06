@@ -14,7 +14,8 @@ The code in this repository are split into multiple different projects which I'v
 * **JavaScript** - [ProductClasses](https://github.com/EmperorMurfy/2024JavaProjects/tree/main/productClasses) - Written on March 19, 2024
 * **C++** - [primeNumber](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/primeNumbers) - Written on March 20, 2024
 * **Python** - [pythonLists](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/pythonLists) - Written on March 21, 2024
-* **Java** - [recursiveFunction](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/recursiveFunction) - Written on Apil 16, 2024
+* **Java** - [recursiveFunction](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/recursiveFunction) - Written on April 16, 2024
+* **Java** - [apShenanigans](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/apShenanigans) - Written on May 5, 2024
 
 
 ## Notes:

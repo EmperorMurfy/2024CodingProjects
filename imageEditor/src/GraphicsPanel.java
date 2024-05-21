@@ -1,7 +1,7 @@
 // Graphics Panel
 
 // Written by: Mason Zhu
-// Date: May 17, 2024
+// Date: May 20, 2024
 // Description: Graphic Panel of imageEditor
 import java.awt.Color;
 import java.awt.Dimension;
@@ -117,7 +117,7 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 				int red = 0;
 				int  green = 0;
 				int blue = 0;
-				
+
 				for (int a = i; a < i + pixelSize && a < modifiedImage.getHeight(); a++) {
 					for (int b = j; b < j + pixelSize && b < modifiedImage.getWidth(); b++) {
 						Color innerColor = new Color(image.getRGB(b, a));
@@ -142,7 +142,26 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 			}
 		}
 	}
-	
+	public void rotateClockWise() throws IOException {
+
+		int Width = modifiedImage.getHeight();
+		int Height = modifiedImage.getWidth();
+		BufferedImage rotatedImage = new BufferedImage(Width, Height, BufferedImage.TYPE_INT_ARGB);
+
+
+		for (int y = 0; y < modifiedImage.getHeight(); y++) {
+			for (int x = 0; x < modifiedImage.getWidth(); x++) {
+
+				int rotatedX = Width - 1 - y;
+				int rotatedY = x;
+
+				rotatedImage.setRGB(rotatedX, rotatedY, modifiedImage.getRGB(x, y));
+			}
+		}
+		modifiedImage = rotatedImage;
+	}
+
+
 	public void reset() throws IOException {
 		File file = new File("src/"+imageName+".jpg");
 		modifiedImage = ImageIO.read(file);
@@ -170,7 +189,16 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 			makePixelated(10);
 			repaint();
 		}
-		
+
+		if (e.getKeyCode() == KeyEvent.VK_5) { // rotate clockwise
+			try {
+				rotateClockWise(); 
+				repaint();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+
 		else if (e.getKeyCode() == KeyEvent.VK_0) { // reset
 			try {
 				reset();
@@ -181,15 +209,6 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 			repaint();
 		}
 	}
-
-
-
-
-
-
-
-
-
 
 
 

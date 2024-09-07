@@ -1,6 +1,6 @@
 # 2024 Coding Projects
 
-Coding projects written between late 2023 - 2024 while learning Java during AP Computer Science or self-teaching coding languages
+Coding projects written between late 2023 - 2024 while learning Java during AP Computer Science + Swift in Computer Science Seminar (2024 section) + self-teaching for coding languages (Python, C++, Javascript, HTML)
 
 The code in this repository are split into multiple different projects which I've either developed personally, or learned by watching tutorials or videos. Note: some of the code are not original code. **However, this does not apply to all of the code here!**
 ## Project List:
@@ -17,18 +17,21 @@ The code in this repository are split into multiple different projects which I'v
 * **Java** - [recursiveFunction](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/recursiveFunction) - Written on April 16, 2024
 * **Java** - [apShenanigans](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/apShenanigans) - Written on May 5, 2024
 * **Java** - [imageEditor](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/imageEditor) - Written on May 17, 2024
+* **Swift** - [Swift Practice + Warmups](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/Swift%20Practice%20%2B%20Warmups) - Written on September 7, 2024
+* **Swift** - [Swift Basic Concepts](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/Basic%20Swift%20Concepts) - Written on September 7, 2024
 
 
 ## Notes:
-* These programs were tested on M1 Mac Eclipse, Visual Studio Code, or via Replit
+* These programs were tested on M1 Mac Eclipse, Visual Studio Code, Xcode, Programiz, or via Replit
 * Each folder should contains a info.md - specific information regarding itself -> more detailed info
 * Most Java programs were written via Java 1.8, check *Exceptions*
 * **Java:** Exception: Stopwatch project uses Java 13
 * **Javascript:** Exception: ArrayProject method nim() was translated 
+* **Swift:** coded in Programiz or Xcode. 
 
 
 
-## Instructions:
+## Instructions :
 If you wish to use any of the code, follow the instructions:
 
 1) Please select on the specific project you wish to run & download said folder
@@ -36,3 +39,5 @@ If you wish to use any of the code, follow the instructions:
 2) Depending on the project, create a new project in your workspace (eclipse or etc) with the correct version
 
 3) The downloaded folder should contain only the SRC files & classes, drag that into your empty project's SRC. This may depend on the project. - only applicable w/ java
+
+*note, this is only for any program using java coding language. these instructions do not apply to any other coding language.*

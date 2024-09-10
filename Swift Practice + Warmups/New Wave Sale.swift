@@ -70,6 +70,8 @@ else {
     wPens = 300
 }
 
+wPens = wPens * Double(countPens) 
+
 // tax + preTax
 let preTax = hardDrive + software + wPhones + wPens
 let tax = 0.6*preTax

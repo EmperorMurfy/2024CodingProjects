@@ -8,16 +8,16 @@ import Foundation
 // hard drives, software packages, wPhones, wPens
 
 
-print("Welcome to New Wave Computers Price Calculator!")
-print("Input the Amount of Product You Wish to Purchace, Respectively")
-print("EX) Enter '0' for none, Enter '1' for one amount")
+print("New Wave Computers™ Calculator")
+print("Input the Amount of Product Via Numeral Values")
 print("___________")
+print("")
 
-print("Customer Name?")
+print("Please enter your name:")
 let name: String = readLine() ?? "Default Name"
 
 // hard drives
-print("Hard Drives?")
+print("How many Hard Drives would you wish to purchace?")
 let countDrive: Int = Int(readLine()!)!
 var hardDrive: Double = Double(countDrive)
 
@@ -32,19 +32,16 @@ hardDrive = 47.4525*hardDrive
 
 else {
     hardDrive = 44.955*hardDrive
-}
-
-// is the discount apply to EACH hard drive respectively, or combined?
-
+} // is the discount apply to EACH hard drive respectively, or combined?
 
 // software + wPhones
-print("Software Packages?")
+print("How many software packages would you like to purchase?")
 let countWare: Int = Int(readLine()!)!
 var software: Double = 25 * Double(countWare)
 
 
 
-print("wPhones?")
+print("How many wPhones would you like to purchase?")
 let countPhones: Int = Int(readLine()!)!
 var wPhones: Double = Double(countPhones)
 
@@ -60,7 +57,7 @@ software = software - (wPhones * 10.0)
 wPhones = wPhones * 399.0
 
 
-print("wPens?")
+print("How many wPens would you like to purchase?")
 let countPens: Int = Int(readLine()!)!
 var wPens: Double = Double(countPens)
 
@@ -95,9 +92,3 @@ print("                    TAX                   $. \(tax)")
 print("                    TOTAL                   $  \(preTax + tax)")
 
 print("************************************************************")
-
-
-
-
-
-

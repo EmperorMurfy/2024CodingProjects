@@ -1,5 +1,5 @@
 // Project : New Wave Sale
-// Written by: Mason Zhu
+// Written by: Mason Z
 // Date: Sept 9, 2024
 // Description: Written in the packet, page 33 + 34
 

@@ -17,6 +17,7 @@ The code in this repository are split into multiple different projects which I'v
 * **Java** - [recursiveFunction](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/recursiveFunction) - Written on April 16, 2024
 * **Java** - [apShenanigans](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/apShenanigans) - Written on May 5, 2024
 * **Java** - [imageEditor](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/imageEditor) - Written on May 17, 2024
+*  **HTML** - [Website Learning Test](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/Website%20Learning%20Test) - Written on July 22, 2024
 * **Swift** - [Swift Practice + Warmups](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/Swift%20Practice%20%2B%20Warmups) - Written on September 7, 2024
 * **Swift** - [Swift Basic Concepts](https://github.com/EmperorMurfy/2024CodingProjects/tree/main/Basic%20Swift%20Concepts) - Written on September 7, 2024
 
@@ -28,6 +29,7 @@ The code in this repository are split into multiple different projects which I'v
 * **Java:** Exception: Stopwatch project uses Java 13
 * **Javascript:** Exception: ArrayProject method nim() was translated 
 * **Swift:** coded in Programiz or Xcode. 
+* **HTML:** Written and tested on Visual Studio Code + Extensions: Live Server/Open In Browser
 
 
 

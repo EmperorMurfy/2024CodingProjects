@@ -1,7 +1,7 @@
 // Project : Yacht Sea
 // Written by: Mason Z
 // Date: Sept 13, 2024
-// Description: Yacht Sea - Missing "4 of a kind, Small Straight, Big Straight, and Choice" Detection. Original approach.
+// Description: Yacht Sea - Missing "4 of a kind, Big Straight, and Choice" Detection. Original approach.
 // note, full house will be recoded to use a set or dictionary instead of current approach as per goal - however, fully functional at said moment. 
 
 var highestScore: Int = 0 // highest score, default zero

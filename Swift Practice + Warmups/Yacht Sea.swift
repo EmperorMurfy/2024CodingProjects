@@ -18,11 +18,6 @@ for _ in 1...20 {
         array.append(number)
     }
     
-        // testing elements - removal is ok
-  //  print("Original Dice Roll")
-  //  print(array)
-
-    
     // a Yacht Sea is where all values in the Array are equal values
     if (array.allSatisfy({ $0 == array.first }) == true) {
         highestScore = 50 // highest possible score
@@ -47,10 +42,6 @@ for _ in 1...20 {
             }
         }
     }
-
-    // testing elements - removal is ok
- //   print("occurance")
- //  print(value)
     
     if (value.contains(2) && value.contains(3) && highestScore < 25) {
         highestScore = 25
@@ -62,11 +53,7 @@ for _ in 1...20 {
     for i in 1...6 {
         value[i-1] *= i 
     }
-     // testing elements - removal is ok   
-  //  print("value")
-   // print(value)
-   // print("")
-    
+
     // find the max
     let max: Int = value.max() ?? 0
     let index: Int = array.firstIndex(of: max) ?? 0
@@ -79,5 +66,3 @@ for _ in 1...20 {
     }
 }
 print("input: \(dice) | output: \(highestScore) | explanation: \(category)")
-
-

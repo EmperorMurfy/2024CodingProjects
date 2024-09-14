@@ -4,13 +4,13 @@
 // Description: Yacht Sea - Missing "4 of a kind, Big Straight, and Choice" Detection. Original approach.
 // note, full house will be recoded to use a set or dictionary instead of current approach as per goal - however, fully functional at said moment. 
 
+// variables 
 var highestScore: Int = 0 // highest score, default zero
 var category: String = "default" // category default temp placeholder
 var dice = [Int]()
 
 for _ in 1...20 {
     var array = [Int]()
-    // var sum: Int = 0
 
     // create random array
     for _ in 1...5 {
@@ -18,7 +18,7 @@ for _ in 1...20 {
         array.append(number)
     }
     
-    // a Yacht Sea is where all values in the Array are equal values
+    // Yacht Sea - if all values is the same
     if (array.allSatisfy({ $0 == array.first }) == true) {
         highestScore = 50 // highest possible score
         category = "Yacht Sea"
@@ -49,16 +49,14 @@ for _ in 1...20 {
         dice = array
     }
   
-    // get all the occurances worth their value
-    for i in 1...6 {
+    for i in 1...6 { // get all the occurances worth their value, say 2 threes in an array? it'll now be 6. 
         value[i-1] *= i 
     }
 
-    // find the max
-    let max: Int = value.max() ?? 0
-    let index: Int = array.firstIndex(of: max) ?? 0
+    let max: Int = value.max() ?? 0  // find the max value in the value array
+    let index: Int = array.firstIndex(of: max) ?? 0 // plus what index it was detected in.
     
-   let numerals = ["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"]
+    let numerals = ["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"]
     if (max > highestScore) {
         highestScore = max
         category = numerals[index]

@@ -1,5 +1,7 @@
-// Date: Sept 6, 2024
+// Date: Sept 16, 2024
 // Written by Mason Z. 
+
+// code exerpt implemented in Yacht Sea
 
 
 var sequence = [1, 2, 0, 3, 4]

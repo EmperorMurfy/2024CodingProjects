@@ -4,12 +4,14 @@
 // Description: Yacht Sea - Missing "4 of a kind, Big Straight, and Choice" Detection. Original approach.
 // note, full house will be recoded to use a set or dictionary instead of current approach as per goal - however, fully functional at said moment. 
 
-// variables 
-var highestScore: Int = 0 // highest score, default zero
-var category: String = "default" // category default temp placeholder
-var dice = [Int]()
+
 
 for _ in 1...20 {
+    // variables 
+    var highestScore: Int = 0 // highest score, default zero
+    var category: String = "default" // category default temp placeholder
+    var dice = [Int]()
+    
     var array = [Int]()
 
     // create random array
@@ -71,5 +73,6 @@ for _ in 1...20 {
         category = numerals[index]
         dice = array
     }
+    print("input: \(dice) | output: \(highestScore) | explanation: \(category)")
 }
-print("input: \(dice) | output: \(highestScore) | explanation: \(category)")
+

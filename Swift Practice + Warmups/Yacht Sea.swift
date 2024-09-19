@@ -4,7 +4,7 @@
 // Description: Yacht Sea - Missing "4 of a kind, Big Straight, and Choice" Detection. Original approach.
 // note, full house will be recoded to use a set or dictionary instead of current approach as per goal - however, fully functional at said moment. 
 
-
+import Foundation
 
 for _ in 1...20 {
     // variables 

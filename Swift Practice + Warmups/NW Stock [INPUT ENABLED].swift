@@ -55,24 +55,36 @@ while (exit == 1) {
             let productName: String = readLine() ?? "default"
             print("Enter the quantity of \(productName)")
             let productQuantity: Int = Int(readLine()!) ?? 0 
+            print(" ")
             
-            if let quantity = stock[productName] { 
-                print("ERROR 403: \(productName) with a quantity of \(quantity) already exists.") 
+            if productQuantity < 0 {
+                print("ERROR 422: New Product \(productName) cannot have negative quantity.")
             }
             
-            else { 
-                stock[productName] = productQuantity 
-            }
+            else {
+                if let quantity = stock[productName] { 
+                    print("ERROR 403: \(productName) with a quantity of \(quantity) already exists.") 
+                }
             
+                else { 
+                  stock[productName] = productQuantity 
+                }
+            }
             
         case 2: // add quantity to existing product
             print("Enter Product Name")
             let productName: String = readLine() ?? "default"
             print("Enter amount added")
             let addedQuantity: Int = Int(readLine()!) ?? 0 
-            
+            print(" ")
+        
+                
             if let productQuantity = stock[productName] {
+                if addedQuantity < 0 {
+                    print("ERROR 422: Cannot add negative quantity to \(productName)")
+                } else {
                 stock[productName] = productQuantity + addedQuantity
+                }
             } else {
                 print("ERROR 404: \(productName) doesn't exist.")
             }
@@ -83,8 +95,12 @@ while (exit == 1) {
             let productName: String = readLine() ?? "default"
             print("Enter amount removed")
             let removedQuantity: Int = Int(readLine()!) ?? 0 
+            print(" ")
             
             if let productQuantity = stock[productName]{
+                if removedQuantity < 0 {
+                    print("ERROR 422: Cannot remove a negative quantity from \(productName)")
+                }
                 stock[productName] = productQuantity - removedQuantity
             } else {
                 print("ERROR 404: \(productName) doesn't exist.")
@@ -110,6 +126,7 @@ while (exit == 1) {
             
             
         default: // ERROR 422: INVALID INPUT OPTION
+            print(" ")
             print("Please select an acceptable choice 1-5 or [0] to exit")
     }
     print(" ")

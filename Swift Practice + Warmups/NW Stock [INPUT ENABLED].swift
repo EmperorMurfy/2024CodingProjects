@@ -11,7 +11,9 @@ var exit = 1
 
 // produce inventory at launch - starting screen
 print ("Product          Quantity")
-for (product, quantity) in stock {
+let sortStock = stock.sorted(by: { $0.value > $1.value })
+
+for (product, quantity) in sortStock {
     print ("\(product)      \(quantity)")
 }
 
@@ -118,9 +120,12 @@ while (exit == 1) {
             
             
         case 5: // All items in Stock Report
+        
+            let sortStock = stock.sorted(by: { $0.value > $1.value })
+            
             print ("Product          Quantity")
             
-            for (product, quantity) in stock {
+            for (product, quantity) in sortStock {
                  print ("\(product)      \(quantity)")
             }
             

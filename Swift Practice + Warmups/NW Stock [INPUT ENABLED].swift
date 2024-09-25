@@ -30,7 +30,8 @@ while (exit == 1) {
     print("2 - Add a Quantity to an Existing Product")
     print("3 - Remove a Quantity to an Existing Product")
     print("4 - Total # of Items in Stock")
-    print("5 - All Items in Stock Report")
+    print("5 - Remove an Entire Item Category from Stock ")
+    print("6 - All Items in Stock Report")
     print("0 - EXIT")
     print("************************************************************")
     
@@ -119,7 +120,19 @@ while (exit == 1) {
             print("Total Items in Stock = \(totalStock) ")
             
             
-        case 5: // All items in Stock Report
+        case 5: // Remove item from Inventory
+            print("Enter Product Name")
+            let productName: String = readLine() ?? "default"
+            print(" ")
+        
+            if let _ = stock.removeValue(forKey: "wPens" ) {
+            }
+            
+            else {
+                print("ERROR 404: \(productName) doesn't exist.")
+            }
+        
+        case 6: // All items in Stock Report
         
             let sortStock = stock.sorted(by: { $0.value > $1.value })
             

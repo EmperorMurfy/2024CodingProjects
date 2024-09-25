@@ -125,7 +125,7 @@ while (exit == 1) {
             let productName: String = readLine() ?? "default"
             print(" ")
         
-            if let _ = stock.removeValue(forKey: "wPens" ) {
+            if let _ = stock.removeValue(forKey: productName ) {
             }
             
             else {

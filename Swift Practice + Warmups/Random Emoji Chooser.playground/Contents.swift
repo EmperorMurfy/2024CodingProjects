@@ -13,7 +13,7 @@ class EmojiChooser {
         self.emojis = emojis
     }
     
-    func getRandomEmojis() {
+    func getRandomEmojis() -> [String] {
         // 4 completely random emoji chooser
         var array = emojis
         
@@ -33,7 +33,7 @@ class EmojiChooser {
         let repeatEmoji = randomEmoji.randomElement() ?? "🤯"
         randomEmoji.insert(repeatEmoji, at: 0)
         
-        print(randomEmoji) // return output
+        return randomEmoji
     }
 }
 
@@ -42,12 +42,14 @@ class EmojiChooser {
 
 // emoji array which stores emojis. 
 // note: also an option to directly input it instead without a constant. 
-let array = ["😃", "😃", "🍷", "🫸", "🔵", "🔴", "🫷", "🤌", "🫴", "🟣", "🤯", "😔", "🤔", "🤫", "🧏"]
+let array = ["😃", "😃", "🍷", "🫸", "🔵", "🔴", "🫷", "🤌", "🫴", "🟣", "🤯", "😔", "🤔", "🤫", "🧏", "💀", "😭", "☺️", "❤️", "👌","💕","😏","😍","👍","✌️","🙈","😎","😴","😁","🥶","🤬","😤"]
 
 var emoji1 = EmojiChooser(emojis: array)
 //print(emoji1.emojis) // print out emoji
 
 // calls getRandom Emoji Function 5 times
 for _ in 1...5 {
-    print(emoji1.getRandomEmojis())
+    let randomEmojis = emoji1.getRandomEmojis()
+     print(randomEmojis)
+     print(" ")
 }

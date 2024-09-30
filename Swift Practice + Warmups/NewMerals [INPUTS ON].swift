@@ -90,6 +90,7 @@ while (exit == 1) {
             exit = 0
 
         case 1: // Access Newmeral Interface
+            print("")
             print("Please input: [Value] [Operator] [Value]")
             print("Note: Include spaces in between Values and Operator EX) AB : CD")
             
@@ -100,20 +101,24 @@ while (exit == 1) {
             } 
             
             else {
+                print(" ")
                 let array = newmerals.split(separator: " ")
             
                 let numeralsA: String = String(array[0].uppercased())
                 let numeralsB: String = String(array[2].uppercased())
             
                 if array[1] == ":" {
+                    print("Resulted output:")
                     print(join_closure(numeralsA, numeralsB))
                 } 
                 
                 else if array[1] == "^" {
+                    print("Resulted output:")
                     print(promotion_closure(numeralsA, numeralsB))
                 } 
                 
                 else if array[1] == "%" {
+                    print("Resulted output:")
                     print(mirror_closure(numeralsA, numeralsB))
                 } 
                 

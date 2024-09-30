@@ -5,6 +5,10 @@
 
 import Foundation
 
+print("ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ʀᴀɴᴅᴏᴍ ᴇᴍᴏᴊɪ ᴄʜᴏᴏꜱᴇʀ")
+print("ʜᴇʀᴇ ɪꜱ 5 ɢᴇɴᴇʀᴀᴛᴇᴅ ᴇᴍᴏᴊɪꜱ!")
+print(" ")
+
 // class 
 class EmojiChooser {
     var emojis: Array<String>

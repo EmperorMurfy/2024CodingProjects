@@ -5,11 +5,14 @@
 
 import Foundation
 
+// Start Screen
 print("welcome to new wave computer systems")
 print("Newmerals™ Software V1.0")
 print(" ")
 
 // Functions
+
+// Join ":"
 var join_closure : (String, String) -> String = {
     var str: String = ""
     let array1 = Array($0)
@@ -23,6 +26,7 @@ var join_closure : (String, String) -> String = {
     return str
 }
 
+// Promote "^"
 var promotion_closure : (String, String) -> String = {
     var str: String = ""
     let array1 = Array($0)
@@ -57,6 +61,7 @@ var promotion_closure : (String, String) -> String = {
     return str
 }
 
+// Mirror "%"
 var mirror_closure : (String, String) -> String = {
     return String($1.reversed()) + $0 + $1
 }
@@ -84,6 +89,7 @@ while (exit == 1) {
         choice = 0
     }
    
+    // Options
     switch choice {
         case 0: // exit program
             print("exiting program...")

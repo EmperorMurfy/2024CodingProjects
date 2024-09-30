@@ -102,8 +102,8 @@ while (exit == 1) {
             else {
                 let array = newmerals.split(separator: " ")
             
-                let numeralsA: String = String(array[0])
-                let numeralsB: String = String(array[2])
+                let numeralsA: String = String(array[0].uppercased())
+                let numeralsB: String = String(array[2].uppercased())
             
                 if array[1] == ":" {
                     print(join_closure(numeralsA, numeralsB))

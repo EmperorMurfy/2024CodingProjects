@@ -91,6 +91,8 @@ while (exit == 1) {
 
         case 1: // Access Newmeral Interface
             print("Please input: [Value] [Operator] [Value]")
+            print("Note: Include spaces in between Values and Operator EX) AB : CD")
+            
             let newmerals: String = readLine() ?? "AB : CD"
 
             if newmerals.isEmpty {

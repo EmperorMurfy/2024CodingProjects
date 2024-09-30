@@ -91,7 +91,7 @@ while (exit == 1) {
 
         case 1: // Access Newmeral Interface
             print("Please input: [Value] [Operator] [Value]")
-            let newmerals: String = readLnine() ?? "AB : CD"
+            let newmerals: String = readLine() ?? "AB : CD"
 
             if newmerals.isEmpty {
                 print("Error 403: No Input Registered.")
@@ -124,4 +124,7 @@ while (exit == 1) {
                 print(" ")
                 print("Error 422: Enter a valid input as stated.")
     }
+    
+    print("")
+    
 }

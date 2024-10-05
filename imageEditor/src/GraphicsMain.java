@@ -1,6 +1,6 @@
 // GraphicsMain.java
 
-// Written by: Mason Zhu
+// Written by: Mason Z
 // Date: May 17, 2024
 // Main Class of imageEditor
 

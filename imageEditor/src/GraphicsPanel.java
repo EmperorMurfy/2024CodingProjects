@@ -1,7 +1,7 @@
 // Graphics Panel
 
-// Written by: Mason Zhu
-// Date: May 20, 2024
+// Written by: Mason Z
+// Date: May 20, 2024 (UPDATED WITH ASCII FUNCTION: Oct 5, 2024)
 // Description: Graphic Panel of imageEditor
 import java.awt.Color;
 import java.awt.Dimension;

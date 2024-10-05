@@ -160,6 +160,60 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 		}
 		modifiedImage = rotatedImage;
 	}
+	
+// test ascii
+	public String convertToAsciiArt(int pixelSize) {
+		  StringBuilder asciiArt = new StringBuilder();
+		  
+		  for (int i = 0; i < modifiedImage.getHeight(); i += pixelSize) {
+		    for (int j = 0; j < modifiedImage.getWidth(); j += pixelSize) {
+		      int red = 0;
+		      int green = 0;
+		      int blue = 0;
+		      
+		      // Calculate average color within the pixel block
+		      for (int a = i; a < i + pixelSize && a < modifiedImage.getHeight(); a++) {
+		        for (int b = j; b < j + pixelSize && b < modifiedImage.getWidth(); b++) {
+		          Color innerColor = new Color(modifiedImage.getRGB(b, a));
+		          red += innerColor.getRed();
+		          green += innerColor.getGreen();
+		          blue += innerColor.getBlue();
+		        }
+		      }
+		      
+		      int numPixels = Math.min(pixelSize * pixelSize, (modifiedImage.getWidth() - j) * (modifiedImage.getHeight() - i));
+		      
+		      // Calculate average grayscale value
+		      int average = (red + green + blue) / (3 * numPixels);
+		      
+		      // Choose ASCII character based on average grayscale value
+		      char asciiChar = chooseAsciiChar(average);
+		      
+		      // Append the character to the ASCII art string
+		      asciiArt.append(asciiChar);
+		    }
+		    asciiArt.append("\n"); // Add a newline character after each row
+		  }
+		  
+		  return asciiArt.toString();
+		}
+
+		private char chooseAsciiChar(int average) {
+		  // Define a mapping between grayscale values and ASCII characters
+		  // Here's an example mapping, you can adjust it for better results
+		  char[] charMap = {' ', '.', ',', '-', ':', '=', '+', '*', '#', '%'};
+		  int threshold = 255 / (charMap.length - 1);
+		  
+		  for (int i = 0; i < charMap.length; i++) {
+		    if (average <= i * threshold) {
+		      return charMap[i];
+		    }
+		  }
+		  
+		  return charMap[charMap.length - 1]; // Return the darkest character for very bright pixels
+		}
+	
+// test ascii
 
 
 	public void reset() throws IOException {
@@ -197,6 +251,14 @@ public class GraphicsPanel extends JPanel implements KeyListener{
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+		}
+		
+		else if (e.getKeyCode() == KeyEvent.VK_6) {
+			int pixelSize = 3; // Adjust pixel size for desired detail
+			String asciiArt = convertToAsciiArt(pixelSize);
+
+			// Print or display the ASCII art string as needed
+			System.out.println(asciiArt);
 		}
 
 		else if (e.getKeyCode() == KeyEvent.VK_0) { // reset

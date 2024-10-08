@@ -1,0 +1,69 @@
+// Project : Classes
+// Written by: Mason Z
+// Date: Oct 8, 2024
+// Description: Classes 
+
+import Foundation
+
+class Rectangle {
+    // stored properties
+    var length: Double
+    var width: Double
+    
+    // computed properties
+    
+    // traditionally in java, would be getters -> now is computed properties
+    var area: Double { // closures
+        length*width // since one line closure, can ommit "return"
+    }
+    
+    var perimeter: Double {
+        2.0 * (length + width)
+    }
+    
+    init(length: Double = 1.0, width: Double = 1.0) { // provide default values in the header
+        self.length = length
+        self.width = width
+    }
+}
+
+class RightRectanglularPrism{
+    var height: Double
+    var base: Rectangle
+    
+    // create two computed properties
+    // volume = base area * height
+    var volume: Double {
+        base.area * height
+    }
+    // surface area = base perimeter * height + 2 * base area
+    var surfaceArea: Double {
+        base.perimeter * height + 2.0 * base.area
+    }
+    // write an initializer with default values
+    
+    init(height: Double = 1.0, base: Rectangle = Rectangle()) {
+        self.height = height
+        self.base = base
+    }
+    
+}
+
+// Rectangle Class
+var r: Rectangle = Rectangle(width: 2.3) // utlizes new length (can set to default by "..Rectangle()"
+print(r.length) // length is still default "1.0"
+
+r.length = 2 * r.width // modify
+print(r.width)
+
+// Right Rectangular Prism Class
+
+var rrr: RightRectanglularPrism = RightRectanglularPrism(height: 3.2, base: r)
+print(rrr.volume)
+
+
+/*
+var prism: RightRectanglularPrism = RightRectanglularPrism()
+print(prism.volume) // returns 1, since all default is 1
+*/
+

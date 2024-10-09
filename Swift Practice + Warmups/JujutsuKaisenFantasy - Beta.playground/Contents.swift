@@ -15,8 +15,8 @@ class Player {
     var cursedEnergy: Double
     var cursedTechnique: [String: [Double]]
     
-    var damage: Double
-    var healing: Double
+    var damage: Int
+    var healing: Int
 
     // [MainAttack, Secondary, Ult, Domain Expansion]
     // Ult - Deal High Damage, Drains cursedEnergy based on Damage Level (Higher, the more it drains)
@@ -32,8 +32,8 @@ class Player {
         }
     }
     
-    var health: Double {
-        return ((125.0 - (Double(grade) * 25.0)) + healing) - damage
+    var health: Int {
+        return ((125 - grade * 25) + healing) - damage
     }
     
     
@@ -43,7 +43,7 @@ class Player {
     
   
     
-    init(name: String = "default", cursedEnergy: Double = 10.0, cursedTechnique: [String : [Double]] = [:], damage: Double = 0.0, healing: Double = 0.0) {
+    init(name: String = "default", cursedEnergy: Double = 10.0, cursedTechnique: [String : [Double]] = [:], damage: Int = 0, healing: Int = 0) {
         self.name = name
         self.cursedEnergy = cursedEnergy
         self.cursedTechnique = cursedTechnique
@@ -53,11 +53,11 @@ class Player {
     }
     
     
-    func reverseCurseTechnique() { //random value between 50% of all current cursed energy to 5% of all current cursed energy - 1HP translates to around 1.2 cursed energy - How to heal allies using excess? 
+    func reverseCurseTechnique() { //random value between 50% of all current cursed energy to 5% of all current cursed energy - 1HP translates to around 1.2 cursed energy - How to heal allies using excess?
         let usedCE = Double.random(in: (0.2 * cursedEnergy)...(0.5 * cursedEnergy))
         cursedEnergy -= usedCE
-        let healAmount = usedCE/1.2
-        let maxHealth: Double = (125.0 - (Double(grade) * 25.0)) // remove that amount of cursed energy
+        let healAmount: Int = Int(usedCE/1.2)
+        let maxHealth: Int = (125 - grade * 25) // remove that amount of cursed energy
         // (100 - 50) = 50 > 30
         
         // 70 + 50 = 120
@@ -65,10 +65,9 @@ class Player {
         print("Reversed Cursed Technique Applied \((healAmount)) to \(name)")
         if (health > maxHealth) {
             let excess = health - maxHealth // excess
-            cursedEnergy += excess * 1.2
+            cursedEnergy += Double(excess) * 1.2
             healing = healing-excess // remove excess
         }
-        
     }
     
     
@@ -82,7 +81,9 @@ class Player {
             
         case 2: //Heal - random value between 75% of all current cursed energy to 5% of all current cursed energy - 1HP translates to around 1.2 cursed energy
             print("heal")
-            reverseCurseTechnique()
+            if (grade < 2) {// grade 1 or 0 can use
+                reverseCurseTechnique()
+            }
         case 3: // Domain Expansion (If Capable)
             print("Domain EXPANSION")
         default:
@@ -122,7 +123,16 @@ class Team {
         self.players = players
     }
     
-    func damageInflicted() {
+    func turn() {
+        var activePlayers: [Player] = [Player]()
+        for player in players {
+            if (player.status == 0) {
+                activePlayers.append(player)
+            }
+        }
+        
+        var selected = activePlayers.randomElement()
+        selected!.action()
     }
     
     func teamReport() -> String { // report entire team
@@ -135,24 +145,19 @@ class Team {
     }
 }
 
-
-// damages - no technique exceed 52.5 damage EXCEPT domain expansion, which cannot exceed 72.5 damage [25, 50, 75, 100, 125]
-//
-
-
-
 // test ignore this
 let gojoSatoru = Player(name: "Gojo Satoru", cursedEnergy: 400.00, cursedTechnique: ["Reversal Red": [20.0, 0.0], "Lapse Blue": [5.0, 4.0], "Hollow Purple": [45.5, 2.0]])
 
 
-                                                                                    
-print(" Grade \(gojoSatoru.grade) Sorcerer")
-print(" Health \(gojoSatoru.health)")
+let team1 = Team(name: "hi", players: [gojoSatoru])
 
+print(team1.teamReport())
 gojoSatoru.damage = 10
-print(" Health \(gojoSatoru.health)")
-gojoSatoru.action()
-                                                                                    
-print(" Health \(gojoSatoru.health)")
+print(team1.teamReport())
+team1.turn()
+print(team1.teamReport())
+
+
+
 
 

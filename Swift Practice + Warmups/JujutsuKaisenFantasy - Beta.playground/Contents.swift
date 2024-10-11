@@ -1,7 +1,7 @@
-// Project: The Culling Games
+// Project: JujutsuKaisenFantasy - Beta
 // Written by: Mason Z.
 // Date: Oct 10, 2024
-// Description:
+// Description: // legacy (beta) version of "The Culling Games
 
 // no domains for now.
 

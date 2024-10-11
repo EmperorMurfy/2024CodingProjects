@@ -1,7 +1,7 @@
-// Project: Fantasy Team Manager Project - Beta JujutusuKaisenFantasy
+// Project: The Culling Games
 // Written by: Mason Z.
-// Date: Oct 8, 2024
-// Description: Beta Test to get Ideas and Concepts Done.
+// Date: Oct 10, 2024
+// Description:
 
 // no domains for now.
 
@@ -12,7 +12,7 @@
 // CE - Cursed Energy
 // RCT - Reverse (Reversed) Curse Technique
 
-/* Heavenly Restriction - 
+/* Heavenly Restriction -
  Debuffs: No Cursed Energy (RCT), No Ult. Hollow Purple will one shot no matter what.
  Buffs:   Damage Absorbtion Increased - All attacks 75% of original damage
           Inital Health Increase compared to Regular Special Grade
@@ -52,26 +52,21 @@ class Player {
     
     
     // based on original set CE - constant computed property
-    var grade: Int {  // ✅
-        let ranks = [4, 3, 2, 1, 0] // 0 = Special Grade
-        if (initialCursedEnergy == 0) { // Heavenly Restriction - Automatically Buffs
-            heavenlyRestriction = true
-            return ranks[4]
-        }
-        else {
-            return ranks[Int(round(initialCursedEnergy/100.0))] // rounds up, take 384.1 - will turn that into a grade 0
-        } // computed properties by nature will change when variables change, therefore if variables don't change, the computed won't. No actual constant computed property; Just the nature of this allows it to remain constantly unchanged.
+var grade: Int {
+    let ranks = [4, 3, 2, 1, 0] // 0 = Special Grade
+    if (initialCursedEnergy == 0) { // Heavenly Restriction - Automatically Buffs
+        heavenlyRestriction = true
+        return ranks[4]
+    } else {
+        var index = initialCursedEnergy/100.0
+        index.round(.toNearestOrAwayFromZero)
+        return ranks[Int(index)] // rounds up, take 384.1 - will turn that into a grade 0
     }
-    
+}
     
     // amount of health - updates when changed
-    var health: Int { //  ✅
-        if (heavenlyRestriction == true) {
-            ((125 - grade * 25) + healing + 35) - Int(0.75 * Double(damage))
-        }
-        else {
-            ((125 - grade * 25) + healing) - damage
-        }
+    var health: Int {
+        return heavenlyRestriction ? ((125 - grade * 25) + healing + 35) - Int(0.75 * Double(damage)) : ((125 - grade * 25) + healing) - damage
     }
     
     
@@ -252,60 +247,74 @@ class Team {
     
     func turn() -> (damage: Int, stun: Int, report: String) { // ✅
         // output a certain damage, stun, and report: (heal, attack: "ability")
+        if (activePlayers.isEmpty == true) {
+            teamReport()
+            var wipe = false
+
+            for player in players { // check for any stunned player in roster
+                if (player.stun > 0) {
+                    wipe = true
+                }
+            }
+
+            if (wipe == true) { // why lost
+                return (damage: 0, stun: 0, report: "Wiped") // All Stunned
+            } else {
+                return (damage: 0, stun: 0, report: "Eliminated") // All Dead
+            }
+            
+        } else {
         let randomPlayer = activePlayers.randomElement()!
         let result = randomPlayer.action()
         recover()
         
         return (damage: result.damage, stun: result.stun, report: "\(randomPlayer.name) - \(result.report)")
-    }
-    
-    
-    func receive(damage: Int, stun: Int, report: String) -> (Bool, String) { // ✅
-        // check if win or lost, take the damge
-        
-        print("")
-        print(report) // ex: Satoru Gojo - Hollow Purple
-        print("Damage Report: \(damage) HP Dealt.")
-        print("")
-        
-        if (activePlayers.isEmpty) { // no one is alive, or everyone is knocked out
-            teamReport()
-            var wipe = false
-            
-            for player in players { // check for any stuned player in roster
-                if (player.stun > 0) {
-                    wipe = true
-                }
-            }
-            
-            if (wipe == true) { // why lost
-                return (true, "Wiped") // All Stunned
-            } else {
-                return (true, "Eliminated") // All Dead
-            }
-            
-           
-        } else {
-            let randomPlayer = activePlayers.randomElement()! // pick random player
-            
-            if (randomPlayer.heavenlyRestriction == true && report == "Satoru Gojo - Hollow Purple") { // heavenlyRestriction - hollow purple guaranteed one shot.
-                randomPlayer.damage = 100000
-                randomPlayer.stun = -1
-            }
-            
-            else {
-                randomPlayer.damage = damage
-                randomPlayer.stun = stun
-            }
-            teamReport() // report stats
-            
-            for player in players {
-                player.replenishCE()
-            }
-            
-            return (false, "")
         }
     }
+    
+    
+    func receive(damage: Int, stun: Int, report: String) -> String {
+    // check if win or lost, take the damage
+
+    print("")
+    print(report) // ex: Satoru Gojo - Hollow Purple
+    print("Damage Report: \(damage) HP Dealt.")
+    print("")
+
+    if (activePlayers.isEmpty) { // no one is alive, or everyone is knocked out
+        teamReport()
+        var wipe = false
+
+        for player in players { // check for any stunned player in roster
+            if (player.stun > 0) {
+                wipe = true
+            }
+        }
+
+        if (wipe == true) { // why lost
+            return "Wiped" // All Stunned
+        } else {
+            return "Eliminated" // All Dead
+        }
+    } else {
+        let randomPlayer = activePlayers.randomElement()! // pick random player
+
+        if (randomPlayer.heavenlyRestriction == true && report == "Satoru Gojo - Hollow Purple") { // heavenlyRestriction - hollow purple guaranteed one shot.
+            randomPlayer.damage = 100000
+            randomPlayer.stun = -1
+        } else {
+            randomPlayer.damage = damage
+            randomPlayer.stun = stun
+        }
+        teamReport() // report stats
+
+        for player in players {
+            player.replenishCE()
+        }
+
+        return ""
+    }
+}
     
     // team info: name, grade, status (health, stun), cursed energy
     func teamReport() { // ✅
@@ -350,7 +359,7 @@ let itadoriYuji = Player(name: "Yuji Itadori", cursedEnergy: 335.00, cursedTechn
 
 
 let team1 = Team(name: "The Super Seniors", players: [gojoSatoru, sukunaRyomen])
-let team2 = Team(name: "Tokyo Jujutsu High", players: [itadoriYuji, fushiguroToji])
+let team2 = Team(name: "Tokyo Jujutsu High", players: [itadoriYuji, sukunaRyomen])
 
 
 print("ᴀʀᴇ ʏᴏᴜ ʟɪꜱᴛᴇɴɪɴɢ? ꜱᴜᴋᴜɴᴀ...\n")
@@ -358,77 +367,40 @@ team1.teamReport()
 print("...ɪᴛ'ꜱ ᴀʙᴏᴜᴛ ᴛᴏ ʀᴇᴛᴜʀɴ ᴀɢᴀɪɴ...")
 team2.teamReport()
 print("...ᴛʜᴇ ɢᴏʟᴅᴇɴ ᴇʀᴀ ᴏꜰ ꜱᴏʀᴄᴇʀʏ.")
-/*
-print("")
-print("ᴛʜᴇ ʜᴇɪᴀɴ ᴇʀᴀ ɪꜱ ᴀʙᴏᴜᴛ ᴛᴏ ʀᴇᴛᴜʀɴ.")
-print("")
- */
+print("\n------------------------------------------")
 
-let rounds = 20 // 20 rounds
-var game = 1 // -1, 1
-for round in 1...rounds { // 20 rounds
-    print("Round \(round)")
-    if (game == 1) {
-        print("a")
+var rounds = 20
+var victor = ""
+for round in 1...rounds {
+    print("𝐑𝐎𝐔𝐍𝐃 \(round)")
+    let turn1 = team1.turn()
+    let state1 = team2.receive(damage: turn1.damage, stun: turn1.stun, report: turn1.report)
+        
+    if (state1 == "Wiped" || state1 == "Eliminated") {
+        victor = "\(team1.name) Wins!\n \(team2.name) \(state1)."
+        break
     }
-    else if (game == -1) {
-        print("b")
+    
+    
+    let turn2 = team2.turn() // turn2 is both immobilized
+    if (turn2.2 == "Wiped" || turn2.2 == "Eliminated") {
+        victor = "\(team2.name) Wins!\n \(team1.name) \(turn2.2)."
+        break
     }
-    print("")
-    game *= -1
+    let state2 = team1.receive(damage: turn2.damage, stun: turn2.stun, report: turn2.report)
+    if (state2 == "Wiped" || state2 == "Eliminated") {
+        victor = "\(team2.name) Wins!\n \(team1.name) \(state2)."
+        break
+    }
+    
 }
+print(victor)
+
+    
+    
+    
+    
+    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-print("round 1 \n")
-
-
-let firstTurn = team1.turn()
-
-
-team2.receive(damage: firstTurn.damage, stun: firstTurn.stun, report: firstTurn.report)
-
-print("team1")
-print(team1.activePlayers[0].cursedEnergy)
-print(team1.activePlayers[1].cursedEnergy)
-team1.teamReport()
-
-
-print("")
-print("active team:")
-for player in team2.activePlayers {
-    print(player.name)
-}
-
-print("team roster")
-for player in team2.players {
-    print(player.name)
-}
-
-print("\n round 2 \n")
-
-team2.recover()
-team2.teamReport()
-
-print("round 3 \n")
-team2.recover()
-team2.teamReport() // issue, if say that a character is knocked out for 6 rounds, they recover from 6 -> 4 -> 2
-
-print("active team:")
-for player in team2.activePlayers {
-    print(player.name)
-}
- */
-
+  

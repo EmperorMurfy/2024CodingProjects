@@ -261,18 +261,24 @@ class Team {
     // check if win or lost, take the damage
     
     let randomPlayer = activePlayers.randomElement()! // pick random player
-    print("")
-    print(report) // ex: Satoru Gojo - Hollow Purple
-    print("Delt \(damage) HP \(randomPlayer.name)")
-    print("Stunned for \(stun) rounds")
-    print("")
+    
 
     if (randomPlayer.heavenlyRestriction == true && report == "Satoru Gojo - Hollow Purple") { // heavenlyRestriction - hollow purple guaranteed one shot.
         randomPlayer.damage = 100000
         randomPlayer.stun = -1
+        print("")
+        print("ɪ...ᴀʟᴏɴᴇ...ᴀᴍ ᴛʜᴇ ʜᴏɴᴏʀᴇᴅ ᴏɴᴇ.\n")
+        print(report) // ex: Satoru Gojo - Hollow Purple
+        print("\(randomPlayer.name) is Eliminated.")
+        print("")
     } else {
         randomPlayer.damage = damage
         randomPlayer.stun = stun
+        print("")
+        print(report) // ex: Satoru Gojo - Hollow Purple
+        print("Delt \(damage) HP \(randomPlayer.name)")
+        print("Stunned for \(stun) rounds")
+        print("")
     }
     teamReport() // report stats
 
@@ -310,24 +316,28 @@ class Team {
 // Players - Passive, Two Abilities, One Ult
 
 // Special Grade
-let gojoSatoru = Player(name: "Satoru Gojo", cursedEnergy: 400.00, cursedTechnique: ["Rapid Punches": [14, 0, 0], "Reversal Red": [26, 0, 55], "Lapse Blue": [18, 3, 45], "Hollow Purple": [70, 4, 160]])
+let gojoSatoru = Player(name: "Satoru Gojo", cursedEnergy: 400.00, cursedTechnique: ["Rapid Punches": [14, 0, 0], "Reversal Red": [26, 0, 55], "Lapse Blue": [18, 3, 45], "Hollow Purple": [75, 4, 165]])
 
-// Special Grade
 let sukunaRyomen = Player(name: "Ryomen Sukuna", cursedEnergy: 395, cursedTechnique: ["Slashes": [18, 0, 0], "Dismantle": [24, 0, 40], "Cleave": [22, 2, 35], "Open...Divine Flame": [65, 6, 155]])
+
+let getoSuguru = Player(name: "Suguru Geto", cursedEnergy: 380, cursedTechnique: ["Cursed Tool: Playful Cloud": [14, 0, 0], "Cursed Spirt Manipulation: Rainbow Dragon": [25, 0, 50], "Cursed Spirit Manipulation: Kuchisake-Onna": [20, 0, 38], "Maximum: Uzumaki": [62, 2, 150]])
 
 // Grade 1
 let itadoriYuji = Player(name: "Yuji Itadori", cursedEnergy: 335.00, cursedTechnique: ["Cursed Tool: Slaughter Demon": [16, 0, 0], "Divergent Fist": [24, 0, 35], "Dismantle": [20, 2, 40], "Piercing Blood": [48, 0, 135]])
 
-// Grade 2
-let inumakiToge = Player(name: "Toge Inumaki", cursedEnergy: 275.00, cursedTechnique: ["Martial Combat": [12, 0, 0], "Cursed Speech: Plumett": [18, 0, 25], "Cursed Speech: Crush": [16, 0, 20], "Cursed Speech: BLAST AWAY": [40, 4, 95]])
+let fushiguroMegumi = Player(name: "Megumi Fushiguro", cursedEnergy: 300.00, cursedTechnique: ["Hand to Hand": [10, 0, 0], "Divine Dogs" : [22, 0, 40], "Nue": [26, 2, 45], "Eight-Handled Sword Divergent Sila Divine General Mahoraga": [70, 4, 162]])
 
+// Grade 2
+let inumakiToge = Player(name: "Toge Inumaki", cursedEnergy: 248.00, cursedTechnique: ["Martial Combat": [8, 0, 0], "Cursed Speech: Plumett": [18, 0, 25], "Cursed Speech: Crush": [16, 0, 20], "Cursed Speech: BLAST AWAY": [40, 4, 95]])
+
+// Grade 3
+let kugisakiNobara = Player(name: "Nobara Kugisaki", cursedEnergy: 200.00, cursedTechnique: ["Rubber Mallet": [5, 0, 0], "Hairpin": [14, 2, 20], "Resonance": [16, 4, 20]])
 
 // Heavenly Restriction
 let fushiguroToji = Player(name: "Toji Fushiguro", cursedEnergy: 0.0, cursedTechnique: ["Cursed Tool: Split Soul Katana": [32, 0, 0], "Cursed Tool: Inverted Spear of Heaven": [28, 2, 0], "Pistol": [38, 2, 0]])
 
 
 let zeninMaki = Player(name: "Maki Zenin", cursedEnergy: 0.0, cursedTechnique: ["Cursed Tool: Playful Cloud": [22, 0, 0], "Cursed Tool: Split Soul Katana": [24, 0, 0], "Cursed Tool: Dragon Bone": [26, 2, 0]])
-
 
 let team1 = Team(name: "ɢᴏᴊᴏ", players: [gojoSatoru, sukunaRyomen]) // ꜱᴜᴘᴇʀ ꜱᴇɴɪᴏʀ ɢᴏᴊᴏ
 let team2 = Team(name: "ᴛᴏᴋʏᴏ ᴊᴜᴊᴜᴛꜱᴜ ʜɪɢʜ", players: [itadoriYuji, zeninMaki, inumakiToge, fushiguroToji])

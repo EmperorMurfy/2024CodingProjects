@@ -312,15 +312,90 @@ class Team {
     }
 }
 
+class Main {
+    var team1: Team
+    var team2: Team
+    var maxRounds: Int
+    
+    init(team1: Team, team2: Team, maxRounds: Int = 20) {
+        self.team1 = team1
+        self.team2 = team2
+        self.maxRounds = maxRounds
+    }
+    
+    func run() {
+        print("ᴀʀᴇ ʏᴏᴜ ʟɪꜱᴛᴇɴɪɴɢ? ꜱᴜᴋᴜɴᴀ...\n")
+        team1.teamReport()
+        print("")
+        print("...ɪᴛ'ꜱ ᴀʙᴏᴜᴛ ᴛᴏ ʀᴇᴛᴜʀɴ ᴀɢᴀɪɴ...\n")
+        team2.teamReport()
+        print("")
+        print("...ᴛʜᴇ ɢᴏʟᴅᴇɴ ᴇʀᴀ ᴏꜰ ꜱᴏʀᴄᴇʀʏ.")
 
+        var rounds = maxRounds
+        var victor = ""
+        var mode = 1
+        var totalRounds: Int = 0
+
+        for round in 1...rounds {
+            totalRounds += 1
+            print("")
+            if (mode == 1) {
+                if (team1.isDead().state == true) { // check if offense is dead
+                    victor = "\(team2.name) ᴡᴏɴ.\n\n\(team1.name) \(team1.isDead().report)"
+                    break
+                }
+                
+                print("\n____________________________________________________")
+                print("𝐑𝐎𝐔𝐍𝐃 \(round)")
+                let turn = team1.turn()
+                team2.receive(damage: turn.damage, stun: turn.stun, report: turn.report)
+                
+            } else if (mode == -1) {
+                if (team2.isDead().state == true) { // check if offense is dead
+                    victor = "\(team1.name) ᴡᴏɴ.\n\n\(team2.name) \(team2.isDead().report)"
+                    break
+                }
+                
+                print("\n____________________________________________________")
+                print("𝐑𝐎𝐔𝐍𝐃 \(round)")
+                let turn = team2.turn()
+                team1.receive(damage: turn.damage, stun: turn.stun, report: turn.report)
+            }
+            mode *= -1
+            print("")
+        }
+
+
+        if (victor == "") {
+            print("\(team1.name) tied with \(team2.name)\n\n")
+            
+            print("Stats: ")
+            print("Total Rounds Elapsed - \(totalRounds)")
+        } else {
+            print("ꜱᴏ ᴛʜɪꜱ ᴍᴇᴀɴꜱ...")
+            print("ʏᴇᴀʜ.")
+            print("\(victor)\n\n")
+            
+            print("Stats: ")
+            print("Total Rounds Elapsed - \(totalRounds-1)")
+        }
+    }
+    
+    
+    
+    
+}
 // Players - Passive, Two Abilities, One Ult
 
 // Special Grade
 let gojoSatoru = Player(name: "Satoru Gojo", cursedEnergy: 400.00, cursedTechnique: ["Rapid Punches": [14, 0, 0], "Reversal Red": [26, 0, 55], "Lapse Blue": [18, 3, 45], "Hollow Purple": [75, 4, 165]])
 
-let sukunaRyomen = Player(name: "Ryomen Sukuna", cursedEnergy: 395, cursedTechnique: ["Slashes": [18, 0, 0], "Dismantle": [24, 0, 40], "Cleave": [22, 2, 35], "Open...Divine Flame": [65, 6, 155]])
+let sukunaRyomen = Player(name: "Ryomen Sukuna", cursedEnergy: 395, cursedTechnique: ["Slashes": [18, 0, 0], "Dismantle": [24, 0, 40], "Cleave": [22, 2, 35], "Open...Divine Flame": [68, 6, 155]])
 
-let getoSuguru = Player(name: "Suguru Geto", cursedEnergy: 380, cursedTechnique: ["Cursed Tool: Playful Cloud": [14, 0, 0], "Cursed Spirt Manipulation: Rainbow Dragon": [25, 0, 50], "Cursed Spirit Manipulation: Kuchisake-Onna": [20, 0, 38], "Maximum: Uzumaki": [62, 2, 150]])
+let getoSuguru = Player(name: "Suguru Geto", cursedEnergy: 385, cursedTechnique: ["Cursed Tool: Playful Cloud": [14, 0, 0], "Cursed Spirt Manipulation: Rainbow Dragon": [25, 0, 50], "Cursed Spirit Manipulation: Kuchisake-Onna": [20, 0, 38], "Maximum: Uzumaki": [62, 2, 150]])
+
+let jogo = Player(name: "Jogo", cursedEnergy: 375, cursedTechnique: ["Flame Presence": [12, 0, 0], "Disaster Flames": [24, 0, 42], "Ember Insects": [12, 2, 32], "Maximum: Meteor": [72, 0, 150]])
 
 // Grade 1
 let itadoriYuji = Player(name: "Yuji Itadori", cursedEnergy: 335.00, cursedTechnique: ["Cursed Tool: Slaughter Demon": [16, 0, 0], "Divergent Fist": [24, 0, 35], "Dismantle": [20, 2, 40], "Piercing Blood": [48, 0, 135]])
@@ -331,7 +406,7 @@ let fushiguroMegumi = Player(name: "Megumi Fushiguro", cursedEnergy: 300.00, cur
 let inumakiToge = Player(name: "Toge Inumaki", cursedEnergy: 248.00, cursedTechnique: ["Martial Combat": [8, 0, 0], "Cursed Speech: Plumett": [18, 0, 25], "Cursed Speech: Crush": [16, 0, 20], "Cursed Speech: BLAST AWAY": [40, 4, 95]])
 
 // Grade 3
-let kugisakiNobara = Player(name: "Nobara Kugisaki", cursedEnergy: 200.00, cursedTechnique: ["Rubber Mallet": [5, 0, 0], "Hairpin": [14, 2, 20], "Resonance": [16, 4, 20]])
+let kugisakiNobara = Player(name: "Nobara Kugisaki", cursedEnergy: 148.00, cursedTechnique: ["Rubber Mallet": [5, 0, 0], "Hairpin": [14, 2, 20], "Resonance": [16, 4, 20]])
 
 // Heavenly Restriction
 let fushiguroToji = Player(name: "Toji Fushiguro", cursedEnergy: 0.0, cursedTechnique: ["Cursed Tool: Split Soul Katana": [32, 0, 0], "Cursed Tool: Inverted Spear of Heaven": [28, 2, 0], "Pistol": [38, 2, 0]])
@@ -339,66 +414,10 @@ let fushiguroToji = Player(name: "Toji Fushiguro", cursedEnergy: 0.0, cursedTech
 
 let zeninMaki = Player(name: "Maki Zenin", cursedEnergy: 0.0, cursedTechnique: ["Cursed Tool: Playful Cloud": [22, 0, 0], "Cursed Tool: Split Soul Katana": [24, 0, 0], "Cursed Tool: Dragon Bone": [26, 2, 0]])
 
-let team1 = Team(name: "ɢᴏᴊᴏ", players: [gojoSatoru, sukunaRyomen]) // ꜱᴜᴘᴇʀ ꜱᴇɴɪᴏʀ ɢᴏᴊᴏ
-let team2 = Team(name: "ᴛᴏᴋʏᴏ ᴊᴜᴊᴜᴛꜱᴜ ʜɪɢʜ", players: [itadoriYuji, zeninMaki, inumakiToge, fushiguroToji])
+let team1 = Team(name: "ɢᴏᴊᴏ", players: [gojoSatoru, sukunaRyomen, getoSuguru, fushiguroToji, jogo]) // ꜱᴜᴘᴇʀ ꜱᴇɴɪᴏʀ ɢᴏᴊᴏ
+let team2 = Team(name: "ᴛᴏᴋʏᴏ ᴊᴜᴊᴜᴛꜱᴜ ʜɪɢʜ", players: [itadoriYuji, zeninMaki, inumakiToge, kugisakiNobara, inumakiToge, fushiguroMegumi])
 
 
-print("ᴀʀᴇ ʏᴏᴜ ʟɪꜱᴛᴇɴɪɴɢ? ꜱᴜᴋᴜɴᴀ...\n")
-team1.teamReport()
-print("")
-print("...ɪᴛ'ꜱ ᴀʙᴏᴜᴛ ᴛᴏ ʀᴇᴛᴜʀɴ ᴀɢᴀɪɴ...\n")
-team2.teamReport()
-print("")
-print("...ᴛʜᴇ ɢᴏʟᴅᴇɴ ᴇʀᴀ ᴏꜰ ꜱᴏʀᴄᴇʀʏ.")
 
-var rounds = 20
-var victor = ""
-var mode = 1
-var totalRounds: Int = 0
-
-for round in 1...rounds {
-    totalRounds += 1
-    print("")
-    if (mode == 1) {
-        if (team1.isDead().state == true) { // check if offense is dead
-            victor = "\(team2.name) ᴡᴏɴ.\n\n\(team1.name) \(team1.isDead().report)"
-            break
-        }
-        
-        print("\n____________________________________________________")
-        print("𝐑𝐎𝐔𝐍𝐃 \(round)")
-        let turn = team1.turn()
-        team2.receive(damage: turn.damage, stun: turn.stun, report: turn.report)
-        
-    } else if (mode == -1) {
-        if (team2.isDead().state == true) { // check if offense is dead
-            victor = "\(team1.name) ᴡᴏɴ.\n\n\(team2.name) \(team2.isDead().report)"
-            break
-        }
-        
-        print("\n____________________________________________________")
-        print("𝐑𝐎𝐔𝐍𝐃 \(round)")
-        let turn = team2.turn()
-        team1.receive(damage: turn.damage, stun: turn.stun, report: turn.report)
-    }
-    mode *= -1
-    print("")
-}
-
-
-if (victor == "") {
-    print("\(team1.name) tied with \(team2.name)\n\n")
-    
-    print("Stats: ")
-    print("Total Rounds Elapsed - \(totalRounds)")
-} else {
-    print("ꜱᴏ ᴛʜɪꜱ ᴍᴇᴀɴꜱ...")
-    print("ʏᴇᴀʜ.")
-    print("\(victor)\n\n")
-    
-    print("Stats: ")
-    print("Total Rounds Elapsed - \(totalRounds-1)")
-}
-
-
- 
+let main1 = Main(team1: team1, team2: team2, maxRounds: 20) // max rounds reference to culling games jjk manga
+main1.run()

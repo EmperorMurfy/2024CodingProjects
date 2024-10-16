@@ -1,6 +1,6 @@
 // Project: The Culling Games
 // Written by: Mason Z.
-// Date: Oct 15, 2024
+// Date: Oct 16, 2024
 // Description:
 
 // no domains for now.
@@ -67,7 +67,13 @@ var grade: Int {
     
     // amount of health - updates when changed
     var health: Int {
-        return heavenlyRestriction ? ((125 - grade * 25) + healing + 35) - Int(0.75 * Double(damage)) : ((125 - grade * 25) + healing) - damage
+        let newHP = heavenlyRestriction ? ((125 - grade * 25) + healing + 35) - Int(0.75 * Double(damage)) : ((125 - grade * 25) + healing) - damage
+
+        if (newHP > maxHealth()) {
+            return maxHealth()
+        } else {
+            return newHP
+        }
     }
     
     
@@ -108,7 +114,7 @@ var grade: Int {
         return actions
     }
 
-    func reverseCurseTechnique() -> String { // ⚠️
+    func reverseCurseTechnique() -> String { // ✅
         let usedCE = Double.random(in: (0.2 * cursedEnergy)...(0.5 * cursedEnergy))
         cursedEnergy -= usedCE
         let healAmount: Int = Int(usedCE/1.2)
@@ -252,7 +258,7 @@ class Team {
     }
     
     
-    func receive(damage: Int, stun: Int, report: String) {
+    func receive(damage: Int, stun: Int, report: String) { // ✅
     // check if win or lost, take the damage
         let randomPlayer = activePlayers.randomElement()! // pick random player
 
@@ -280,7 +286,7 @@ class Team {
         }
     }
     
-    func isDead() -> (state: Bool, report: String) {
+    func isDead() -> (state: Bool, report: String) { // ✅
         for player in players { // check for any stunned player in roster
             if (activePlayers.isEmpty) {
                 if (player.stun > 0) {
@@ -322,7 +328,7 @@ class Main {
         self.maxRounds = maxRounds
     }
     
-    func run() {
+    func run() { // ✅
         print("ᴀʀᴇ ʏᴏᴜ ʟɪꜱᴛᴇɴɪɴɢ? ꜱᴜᴋᴜɴᴀ...\n")
         team1.teamReport()
         print("")

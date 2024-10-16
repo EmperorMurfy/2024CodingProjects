@@ -108,7 +108,7 @@ var grade: Int {
         return actions
     }
 
-    func reverseCurseTechnique() -> String { // ✅
+    func reverseCurseTechnique() -> String { // ⚠️
         let usedCE = Double.random(in: (0.2 * cursedEnergy)...(0.5 * cursedEnergy))
         cursedEnergy -= usedCE
         let healAmount: Int = Int(usedCE/1.2)

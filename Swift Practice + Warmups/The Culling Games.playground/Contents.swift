@@ -1,6 +1,6 @@
 // Project: The Culling Games
 // Written by: Mason Z.
-// Date: Oct 10, 2024
+// Date: Oct 15, 2024
 // Description:
 
 // no domains for now.
@@ -87,7 +87,7 @@ var grade: Int {
         var choice = 1
         let maxHealth = maxHealth()
         
-        if (grade < 2 && Int(cursedEnergy) != 0 && Int(initialCursedEnergy) != 0 && maxHealth != health && heavenlyRestriction == false) {
+        if (grade < 2 && Int(cursedEnergy) != 0 && Int(initialCursedEnergy) != 0 && maxHealth > health && heavenlyRestriction == false) {
             // must be grade 1 or up, must have more than 0 cursedEnergy, cannot have heavenly restriction, if health is 100%, won't get heal
             choice = Int.random(in: 1...2)
         }
@@ -102,13 +102,12 @@ var grade: Int {
             //Heal - random value between 75% of all current cursed energy to 5% of all current cursed energy - 1HP translates to around 1.2 cursed energy
             
             let report = reverseCurseTechnique() // used amount of RCT
-            actions = (0, 0, report) // deal no damage
+            actions = (0, 0, "\(report)\n Debug Report: \(healing) + \(damage)\n ") // deal no damage
+            // actions = (0, 0, "\(report)") // deal no damage
         }
         return actions
     }
-    
-    
-    // when called in Action() -> random value of current CE (50% - 5%) -> convert 1.2 CE to 1HP -> add to health (heal)
+
     func reverseCurseTechnique() -> String { // ✅
         let usedCE = Double.random(in: (0.2 * cursedEnergy)...(0.5 * cursedEnergy))
         cursedEnergy -= usedCE
@@ -117,15 +116,13 @@ var grade: Int {
         // (100 - 50) = 50 > 30
         
         // 70 + 50 = 120
-        healing += healAmount
         let report = "RCT: \(healAmount) HP"
+        if (health + healAmount) > maxHealth {
+            healing += maxHealth - health
+          } else {
+            healing += healAmount
+          }
         
-        if (health > maxHealth) { // remove excess amount of health -> 70 + 50 = 120
-            // -> 120 set back to 100 (example original health)
-            let excess = health - maxHealth // excess
-            cursedEnergy += Double(excess) * 1.2
-            healing = healing-excess // remove excess
-        }
         return report
     }
     
@@ -165,7 +162,7 @@ var grade: Int {
         if (heavenlyRestriction == true) {
             return (125 - grade * 25) + 35
         } else {
-            return 125 - grade * 25
+            return 125 - (grade * 25)
         }
     }
     
@@ -213,8 +210,6 @@ var grade: Int {
 }
 
 
-
-
 // Team Class
 class Team {
     // variables
@@ -259,33 +254,31 @@ class Team {
     
     func receive(damage: Int, stun: Int, report: String) {
     // check if win or lost, take the damage
-    
-    let randomPlayer = activePlayers.randomElement()! // pick random player
-    
+        let randomPlayer = activePlayers.randomElement()! // pick random player
 
-    if (randomPlayer.heavenlyRestriction == true && report == "Satoru Gojo - Hollow Purple") { // heavenlyRestriction - hollow purple guaranteed one shot.
-        randomPlayer.damage = 100000
-        randomPlayer.stun = -1
-        print("")
-        print("ɪ...ᴀʟᴏɴᴇ...ᴀᴍ ᴛʜᴇ ʜᴏɴᴏʀᴇᴅ ᴏɴᴇ.\n")
-        print(report) // ex: Satoru Gojo - Hollow Purple
-        print("\(randomPlayer.name) is Eliminated.")
-        print("")
-    } else {
-        randomPlayer.damage = damage
-        randomPlayer.stun = stun
-        print("")
-        print(report) // ex: Satoru Gojo - Hollow Purple
-        print("Delt \(damage) HP \(randomPlayer.name)")
-        print("Stunned for \(stun) rounds")
-        print("")
-    }
-    teamReport() // report stats
+        if (randomPlayer.heavenlyRestriction == true && report == "Satoru Gojo - Hollow Purple") { // heavenlyRestriction - hollow purple guaranteed one shot.
+            randomPlayer.damage = 100000
+            randomPlayer.stun = -1
+            print("")
+            print("ɪ...ᴀʟᴏɴᴇ...ᴀᴍ ᴛʜᴇ ʜᴏɴᴏʀᴇᴅ ᴏɴᴇ.\n")
+            print(report) // ex: Satoru Gojo - Hollow Purple
+            print("\(randomPlayer.name) is Eliminated.")
+            print("")
+        } else {
+            randomPlayer.damage = damage
+            randomPlayer.stun = stun
+            print("")
+            print(report) // ex: Satoru Gojo - Hollow Purple
+            print("Delt \(damage) HP \(randomPlayer.name)")
+            print("Stunned for \(stun) rounds")
+            print("")
+        }
+        teamReport() // report stats
 
-    for player in players {
-        player.replenishCE()
+        for player in players {
+            player.replenishCE()
+        }
     }
-}
     
     func isDead() -> (state: Bool, report: String) {
         for player in players { // check for any stunned player in roster
@@ -315,6 +308,8 @@ class Team {
         print("************************************************************")
     }
 }
+
+
 
 class Main {
     var team1: Team
@@ -370,7 +365,6 @@ class Main {
             print("")
         }
 
-
         if (victor == "") {
             print("\(team1.name) tied with \(team2.name)\n\n")
             
@@ -385,10 +379,6 @@ class Main {
             print("Total Rounds Elapsed - \(totalRounds-1)")
         }
     }
-    
-    
-    
-    
 }
 // Players - Passive, Two Abilities, One Ult
 
@@ -425,7 +415,6 @@ let zeninMaki = Player(name: "Maki Zenin", cursedEnergy: 0.0, cursedTechnique: [
 
 let team1 = Team(name: "ɢᴏᴊᴏ", players: [gojoSatoru, sukunaRyomen, getoSuguru, fushiguroToji, jogo, kashimoHajime]) // ꜱᴜᴘᴇʀ ꜱᴇɴɪᴏʀ ɢᴏᴊᴏ
 let team2 = Team(name: "ᴛᴏᴋʏᴏ ᴊᴜᴊᴜᴛꜱᴜ ʜɪɢʜ", players: [itadoriYuji, zeninMaki, inumakiToge, kugisakiNobara, fushiguroMegumi, tsukumoYuki])
-
 
 
 let main1 = Main(team1: team1, team2: team2, maxRounds: 20) // max rounds reference to culling games jjk manga
